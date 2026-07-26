@@ -1,0 +1,162 @@
+.order-window-container {
+  width: 380px;
+  background-color: #121824;
+  border: 1px solid #1f293d;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f8fafc;
+}
+
+.order-window-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1f293d;
+}
+
+.buy-theme .order-window-header {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-bottom-color: rgba(59, 130, 246, 0.2);
+}
+
+.sell-theme .order-window-header {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-bottom-color: rgba(239, 68, 68, 0.2);
+}
+
+.order-window-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.buy-theme .order-window-header h3 {
+  color: #3b82f6;
+}
+
+.sell-theme .order-window-header h3 {
+  color: #ef4444;
+}
+
+.close-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+}
+
+.order-error {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-left: 4px solid #ef4444;
+  color: #fca5a5;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+  margin: 15px 15px 0 15px;
+  border-radius: 4px;
+}
+
+.order-window-body {
+  padding: 20px;
+}
+
+.inputs {
+  display: flex;
+  gap: 15px;
+}
+
+.inputs fieldset {
+  flex: 1;
+  border: 1px solid #1f293d;
+  border-radius: 6px;
+  padding: 0 10px 8px 10px;
+  background-color: #0b0f19;
+}
+
+.inputs fieldset legend {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding: 0 6px;
+  margin-left: 4px;
+}
+
+.inputs fieldset input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 8px 4px 0 4px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.order-window-footer {
+  padding: 16px 20px;
+  background-color: #0b0f19;
+  border-top: 1px solid #1f293d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.margin-info {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.buy-theme .btn-action {
+  background-color: #3b82f6;
+}
+
+.sell-theme .btn-action {
+  background-color: #ef4444;
+}
+
+.btn-action:hover {
+  opacity: 0.9;
+}
+
+.btn-grey {
+  background-color: #1f293d;
+  color: #94a3b8;
+  border: 1px solid #1f293d;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-grey:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
