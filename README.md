@@ -2,6 +2,11 @@
 
 Welcome to the **Kite Zerodha Clone**—a full-stack, high-fidelity stock trading simulation platform rebuilt from the ground up to feature an ultra-premium, dark glassmorphic theme, live ticking market prices, and secure database-backed virtual trade execution.
 
+## 🔗 Live Demo
+*   **Marketing Landing Page**: [https://subhasish1208-zerodha.vercel.app](https://subhasish1208-zerodha.vercel.app) *(Replace with your deployed Vercel link)*
+*   **Trading Platform (Kite)**: [https://subhasish1208-kite.vercel.app](https://subhasish1208-kite.vercel.app) *(Replace with your deployed Vercel link)*
+*   **Server API**: [https://subhasish1208-backend.onrender.com](https://subhasish1208-backend.onrender.com) *(Replace with your deployed Render link)*
+
 ---
 
 ## 🎨 Premium Theme Overlay ("Looks Mine")
