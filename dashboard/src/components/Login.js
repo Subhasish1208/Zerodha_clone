@@ -21,7 +21,7 @@ const Login = ({ onLoginSuccess }) => {
 
     try {
       if (isLogin) {
-        const res = await axios.post("http://localhost:3002/api/auth/login", {
+        const res = await axios.post("https://zerodha-backend-ivqg.onrender.com/api/auth/login", {
           username,
           password,
         });
@@ -30,7 +30,7 @@ const Login = ({ onLoginSuccess }) => {
         localStorage.setItem("userId", res.data.user._id);
         onLoginSuccess();
       } else {
-        const res = await axios.post("http://localhost:3002/api/auth/signup", {
+        const res = await axios.post("https://zerodha-backend-ivqg.onrender.com/api/auth/signup", {
           username,
           password,
         });

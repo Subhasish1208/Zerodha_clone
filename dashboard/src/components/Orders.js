@@ -6,7 +6,7 @@ const Orders = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3002/allOrders", {
+    axios.get("https://zerodha-backend-ivqg.onrender.com/allOrders", {
       headers: {
         Authorization: `Bearer ${token}`
       }

@@ -11,13 +11,13 @@ const Summary = () => {
     const token = localStorage.getItem("token");
     
     // Fetch funds
-    axios.get("http://localhost:3002/funds", {
+    axios.get("https://zerodha-backend-ivqg.onrender.com/funds", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setBalance(res.data.balance))
       .catch(err => console.error("Error fetching funds:", err));
 
     // Fetch holdings
-    axios.get("http://localhost:3002/allHoldings", {
+    axios.get("https://zerodha-backend-ivqg.onrender.com/allHoldings", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setHoldings(res.data))
       .catch(err => console.error("Error fetching holdings:", err));

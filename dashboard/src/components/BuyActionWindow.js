@@ -32,7 +32,7 @@ const BuyActionWindow = ({ uid, mode }) => {
 
     try {
       await axios.post(
-        "http://localhost:3002/newOrder",
+        "https://zerodha-backend-ivqg.onrender.com/newOrder",
         {
           name: uid,
           qty: Number(stockQuantity),

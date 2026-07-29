@@ -7,7 +7,7 @@ const Funds = () => {
 
   const fetchFunds = () => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3002/funds", {
+    axios.get("https://zerodha-backend-ivqg.onrender.com/funds", {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -36,7 +36,7 @@ const Funds = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        "http://localhost:3002/updateFunds",
+        "https://zerodha-backend-ivqg.onrender.com/updateFunds",
         { amount, action },
         {
           headers: {
