@@ -30,12 +30,12 @@ function Navbar() {
           <form className="d-flex" role="search">
             <ul className="navbar-nav mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="http://localhost:3001/">
+                <a className="nav-link active" href="https://zerodha-dashboard-nu-two.vercel.app/">
                   Login
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="http://localhost:3001/">
+                <a className="nav-link active" href="https://zerodha-dashboard-nu-two.vercel.app/">
                   Signup
                 </a>
               </li>
