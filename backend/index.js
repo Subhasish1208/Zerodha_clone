@@ -15,7 +15,12 @@ const uri=process.env.MONGO_URL;
 const app=express();
 
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://zerodha-clone-pied-tau.vercel.app",
+    "https://zerodha-dashboard-nu-two.vercel.app"
+  ],
   credentials: true
 }));
 app.use(bodyParser.json());
