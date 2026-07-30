@@ -23,12 +23,7 @@
     />
   </a>
 
-  <a href="https://zerodha-backend-ivqg.onrender.com">
-    <img
-      src="https://img.shields.io/badge/Backend_API-Online-8e24aa?style=for-the-badge&logo=render&logoColor=white"
-      alt="Open Zerodha Backend API"
-    />
-  </a>
+
 </p>
 
 ---
@@ -39,7 +34,7 @@
 |---|---|---|
 | Marketing Website | Public Zerodha-inspired landing website | [Open Landing Page](https://zerodha-clone-pied-tau.vercel.app/) |
 | Trading Dashboard | Authenticated virtual stock trading workspace | [Open Trading Dashboard](https://zerodha-dashboard-nu-two.vercel.app/) |
-| Backend API | Authentication, portfolio, funds, and trade-processing server | [Open Backend API](https://zerodha-backend-ivqg.onrender.com) |
+
 
 ---
 
@@ -1300,12 +1295,7 @@ Platform: Vercel
 URL: https://zerodha-dashboard-nu-two.vercel.app/
 ```
 
-## Backend API
 
-```text
-Platform: Render
-URL: https://zerodha-backend-ivqg.onrender.com
-```
 
 ## Production Database
 
