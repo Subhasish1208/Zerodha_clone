@@ -11,13 +11,13 @@ const Summary = () => {
     const token = localStorage.getItem("token");
     
     // Fetch funds
-    axios.get("https://zerodha-clone-seven-xi.vercel.app/funds", {
+    axios.get("https://zerodha-backend-api.vercel.app/funds", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setBalance(res.data.balance))
       .catch(err => console.error("Error fetching funds:", err));
 
     // Fetch holdings
-    axios.get("https://zerodha-clone-seven-xi.vercel.app/allHoldings", {
+    axios.get("https://zerodha-backend-api.vercel.app/allHoldings", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setHoldings(res.data))
       .catch(err => console.error("Error fetching holdings:", err));

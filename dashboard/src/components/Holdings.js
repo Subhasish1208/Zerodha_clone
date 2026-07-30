@@ -9,7 +9,7 @@ const Holdings = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("https://zerodha-clone-seven-xi.vercel.app/allHoldings", {
+    axios.get("https://zerodha-backend-api.vercel.app/allHoldings", {
       headers: {
         Authorization: `Bearer ${token}`
       }

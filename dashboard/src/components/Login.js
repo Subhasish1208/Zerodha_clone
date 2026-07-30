@@ -21,7 +21,7 @@ const Login = ({ onLoginSuccess }) => {
 
     try {
       if (isLogin) {
-        const res = await axios.post("https://zerodha-clone-seven-xi.vercel.app/api/auth/login", {
+        const res = await axios.post("https://zerodha-backend-api.vercel.app/api/auth/login", {
           username,
           password,
         });
@@ -30,7 +30,7 @@ const Login = ({ onLoginSuccess }) => {
         localStorage.setItem("userId", res.data.user._id);
         onLoginSuccess();
       } else {
-        const res = await axios.post("https://zerodha-clone-seven-xi.vercel.app/api/auth/signup", {
+        const res = await axios.post("https://zerodha-backend-api.vercel.app/api/auth/signup", {
           username,
           password,
         });
