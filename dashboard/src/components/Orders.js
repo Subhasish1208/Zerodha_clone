@@ -6,7 +6,7 @@ const Orders = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("https://zerodha-backend-ivqg.onrender.com/allOrders", {
+    axios.get("https://zerodha-clone-seven-xi.vercel.app/allOrders", {
       headers: {
         Authorization: `Bearer ${token}`
       }

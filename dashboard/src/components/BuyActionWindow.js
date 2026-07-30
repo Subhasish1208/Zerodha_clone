@@ -35,7 +35,7 @@ const BuyActionWindow = ({ uid, mode }) => {
       const finalQty = Number(stockQuantity) > 0 ? Number(stockQuantity) : 1;
 
       await axios.post(
-        "https://zerodha-backend-ivqg.onrender.com/newOrder",
+        "https://zerodha-clone-seven-xi.vercel.app/newOrder",
         {
           name: uid,
           qty: finalQty,

@@ -7,7 +7,7 @@ const Funds = () => {
 
   const fetchFunds = () => {
     const token = localStorage.getItem("token");
-    axios.get("https://zerodha-backend-ivqg.onrender.com/funds", {
+    axios.get("https://zerodha-clone-seven-xi.vercel.app/funds", {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -36,7 +36,7 @@ const Funds = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        "https://zerodha-backend-ivqg.onrender.com/updateFunds",
+        "https://zerodha-clone-seven-xi.vercel.app/updateFunds",
         { amount, action },
         {
           headers: {

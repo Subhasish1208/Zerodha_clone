@@ -8,7 +8,7 @@ const Positions = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("https://zerodha-backend-ivqg.onrender.com/allPositions", {
+    axios.get("https://zerodha-clone-seven-xi.vercel.app/allPositions", {
       headers: {
         Authorization: `Bearer ${token}`
       }
