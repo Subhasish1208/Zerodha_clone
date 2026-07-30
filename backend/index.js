@@ -413,9 +413,27 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
    }
 });
 
-app.listen(PORT, () =>{
-    console.log(`Server started on port ${PORT}!`);
-    mongoose.connect(uri)
-      .then(() => console.log("DB connected!"))
-      .catch((err) => console.log("DB connection error:", err));
+let isConnected = false;
+const connectDB = async () => {
+  if (isConnected && mongoose.connection.readyState === 1) return;
+  try {
+    await mongoose.connect(uri);
+    isConnected = true;
+    console.log("DB connected!");
+  } catch (err) {
+    console.log("DB connection error:", err);
+  }
+};
+
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
 });
+
+if (require.main === module || process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}!`);
+  });
+}
+
+module.exports = app;
