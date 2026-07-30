@@ -2,10 +2,15 @@
 
 Welcome to the **Kite Zerodha Clone**—a full-stack, high-fidelity stock trading simulation platform rebuilt from the ground up to feature an ultra-premium, dark glassmorphic theme, live ticking market prices, and secure database-backed virtual trade execution.
 
-## 🔗 Live Demo
-*   **Marketing Landing Page**: [https://subhasish1208-zerodha.vercel.app](https://subhasish1208-zerodha.vercel.app) *(Replace with your deployed Vercel link)*
-*   **Trading Platform (Kite)**: [https://subhasish1208-kite.vercel.app](https://subhasish1208-kite.vercel.app) *(Replace with your deployed Vercel link)*
-*   **Server API**: [https://subhasish1208-backend.onrender.com](https://subhasish1208-backend.onrender.com) *(Replace with your deployed Render link)*
+## 🔗 Live Links
+*   **Marketing Landing Page**: [https://zerodha-clone-pied-tau.vercel.app/](https://zerodha-clone-pied-tau.vercel.app/)
+*   **Trading Platform (Kite)**: [https://zerodha-dashboard-nu-two.vercel.app/](https://zerodha-dashboard-nu-two.vercel.app/)
+*   **Server API**: [https://zerodha-backend-ivqg.onrender.com](https://zerodha-backend-ivqg.onrender.com)
+
+### 🔑 Test Credentials
+To explore the trading workspace immediately without creating a new account, use the following demo credentials:
+*   **Username / Client ID**: `Demo`
+*   **Password**: `Demo`
 
 ---
 
@@ -43,12 +48,12 @@ Unlike the plain white look of standard trading applications, this clone is styl
 * **Middlewares**: CORS (Multi-origin support for dev servers), Body-Parser
 
 ### Database (Data Persistence)
-* **DBMS**: MongoDB (Atlas cloud cluster or local fallback instance)
+* **DBMS**: MongoDB (Atlas cloud cluster)
 * **ORM**: Mongoose schemas (Users, Holdings, Positions, and Orders models)
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Local Run)
 
 To spin up the entire trading simulator ecosystem locally:
 
@@ -86,8 +91,8 @@ npm start
 ---
 
 ## 🔮 Demo Instructions
-1. Open the landing page at [http://localhost:3000](http://localhost:3000).
-2. Click **Signup Now** or **Login** to redirect to the trading workspace at [http://localhost:3001](http://localhost:3001).
-3. Switch to the **Create an account** tab, sign up, and log in.
+1. Open the landing page at [https://zerodha-clone-pied-tau.vercel.app/](https://zerodha-clone-pied-tau.vercel.app/).
+2. Click **Signup Now** or **Login** to redirect to the trading workspace.
+3. Use the demo credentials (`Demo` / `Demo`) or create a new account.
 4. Your account is automatically initialized with 13 default holdings, 2 positions, and ₹100,000 in virtual funds!
 5. Experience live-ticking stock prices, place buy/sell orders, deposit virtual cash on the **Funds** tab, and view your completed trades on the **Orders** tab.
