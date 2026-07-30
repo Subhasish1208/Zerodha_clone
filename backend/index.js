@@ -19,7 +19,7 @@ app.use(cors({
     "http://localhost:3000",
     "http://localhost:3001",
     "https://zerodha-clone-pied-tau.vercel.app",
-    "https://zerodha-dashboard-nu-two.vercel.app"
+    "https://zerodha-dashboard-three-alpha.vercel.app"
   ],
   credentials: true
 }));
