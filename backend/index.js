@@ -291,16 +291,24 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
 
      const quantity = Number(qty);
      const stockPrice = Number(price);
+
+     if (isNaN(quantity) || quantity <= 0) {
+       return res.status(400).json({ error: "Invalid quantity specified" });
+     }
+     if (isNaN(stockPrice) || stockPrice <= 0) {
+       return res.status(400).json({ error: "Invalid stock price" });
+     }
+
      const totalCost = quantity * stockPrice;
 
      if (mode === "BUY") {
        if (user.balance < totalCost) {
-         return res.status(400).json({ error: "Insufficient funds" });
+         return res.status(400).json({ error: `Insufficient funds. Required: ₹${totalCost.toFixed(2)}, Available: ₹${user.balance.toFixed(2)}` });
        }
        user.balance -= totalCost;
        await user.save();
 
-       // Update Positions
+       // Update or Create in Positions
        let position = await PositionsModel.findOne({ userId: req.user.id, name, product: "CNC" });
        if (position) {
          const newQty = position.qty + quantity;
@@ -324,7 +332,7 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
          });
        }
 
-       // Update Holdings
+       // Update or Create in Holdings
        let holding = await HoldingsModel.findOne({ userId: req.user.id, name });
        if (holding) {
          const newQty = holding.qty + quantity;
@@ -345,25 +353,36 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
          });
        }
      } else if (mode === "SELL") {
-       // Check positions
-       let position = await PositionsModel.findOne({ userId: req.user.id, name, product: "CNC" });
-       if (!position || position.qty < quantity) {
-         return res.status(400).json({ error: "Insufficient quantity in Positions to sell" });
-       }
-
-       position.qty -= quantity;
-       if (position.qty === 0) {
-         await PositionsModel.deleteOne({ _id: position._id });
-       } else {
-         position.price = stockPrice;
-         position.isLoss = position.price < position.avg;
-         await position.save();
-       }
-
-       // Update Holdings
        let holding = await HoldingsModel.findOne({ userId: req.user.id, name });
-       if (holding) {
-         holding.qty = Math.max(0, holding.qty - quantity);
+       let position = await PositionsModel.findOne({ userId: req.user.id, name, product: "CNC" });
+
+       const holdingQty = holding ? holding.qty : 0;
+       const positionQty = position ? position.qty : 0;
+       const totalOwned = holdingQty + positionQty;
+
+       if (totalOwned < quantity) {
+         return res.status(400).json({ error: `Insufficient stock quantity to sell. You own ${totalOwned} shares of ${name}.` });
+       }
+
+       let remainingToSell = quantity;
+
+       // Deduct from Position first if available
+       if (position && position.qty > 0) {
+         const deductFromPos = Math.min(position.qty, remainingToSell);
+         position.qty -= deductFromPos;
+         remainingToSell -= deductFromPos;
+         if (position.qty === 0) {
+           await PositionsModel.deleteOne({ _id: position._id });
+         } else {
+           position.price = stockPrice;
+           position.isLoss = position.price < position.avg;
+           await position.save();
+         }
+       }
+
+       // Deduct remaining from Holding if needed
+       if (remainingToSell > 0 && holding && holding.qty > 0) {
+         holding.qty -= remainingToSell;
          if (holding.qty === 0) {
            await HoldingsModel.deleteOne({ _id: holding._id });
          } else {

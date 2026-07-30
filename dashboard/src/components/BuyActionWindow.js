@@ -31,12 +31,15 @@ const BuyActionWindow = ({ uid, mode }) => {
     }
 
     try {
+      const finalPrice = Number(stockPrice) > 0 ? Number(stockPrice) : (Number(livePrice) > 0 ? Number(livePrice) : 100);
+      const finalQty = Number(stockQuantity) > 0 ? Number(stockQuantity) : 1;
+
       await axios.post(
         "https://zerodha-backend-ivqg.onrender.com/newOrder",
         {
           name: uid,
-          qty: Number(stockQuantity),
-          price: Number(stockPrice),
+          qty: finalQty,
+          price: finalPrice,
           mode: mode || "BUY",
         },
         {
