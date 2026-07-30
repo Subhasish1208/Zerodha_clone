@@ -10,7 +10,7 @@ function OpenAccount() {
           F&O trades.
         </p>
         <a
-          href="https://zerodha-dashboard-nu-two.vercel.app/"
+          href="https://zerodha-dashboard-three-alpha.vercel.app/"
           className="p-2 btn btn-primary fs-5 mb-5 text-decoration-none"
           style={{ width: "20%", margin: "0 auto", color: "#fff" }}
         >
