@@ -1,5 +1,6 @@
 const express=require("express");
 const mongoose=require("mongoose");
+mongoose.set('bufferCommands', false);
 const bodyParser=require('body-parser');
 const cors=require('cors');
 require('dotenv').config();
@@ -416,18 +417,22 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
 let isConnected = false;
 const connectDB = async () => {
   if (isConnected && mongoose.connection.readyState === 1) return;
-  try {
-    await mongoose.connect(uri);
-    isConnected = true;
-    console.log("DB connected!");
-  } catch (err) {
-    console.log("DB connection error:", err);
+  if (!uri) {
+    throw new Error("MONGO_URL environment variable is missing");
   }
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
+  isConnected = true;
+  console.log("DB connected!");
 };
 
 app.use(async (req, res, next) => {
-  await connectDB();
-  next();
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("DB connection error:", err.message);
+    res.status(503).json({ error: `Database connection failed (${err.message}). Please ensure MongoDB Atlas Network Access is set to 0.0.0.0/0.` });
+  }
 });
 
 if (require.main === module || process.env.NODE_ENV !== "production") {
