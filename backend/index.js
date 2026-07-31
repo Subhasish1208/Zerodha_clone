@@ -26,6 +26,27 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
+let isConnected = false;
+const connectDB = async () => {
+  if (isConnected && mongoose.connection.readyState === 1) return;
+  if (!uri) {
+    throw new Error("MONGO_URL environment variable is missing");
+  }
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
+  isConnected = true;
+  console.log("DB connected!");
+};
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("DB connection error:", err.message);
+    res.status(503).json({ error: `Database connection failed (${err.message}). Please ensure MongoDB Atlas Network Access is set to 0.0.0.0/0.` });
+  }
+});
+
 app.use("/api/auth", authRoutes);
 
 // app.get('/addHoldings', async(req,res)=>{
@@ -414,26 +435,7 @@ app.post('/newOrder', authMiddleware, async(req,res)=>{
    }
 });
 
-let isConnected = false;
-const connectDB = async () => {
-  if (isConnected && mongoose.connection.readyState === 1) return;
-  if (!uri) {
-    throw new Error("MONGO_URL environment variable is missing");
-  }
-  await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
-  isConnected = true;
-  console.log("DB connected!");
-};
 
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (err) {
-    console.error("DB connection error:", err.message);
-    res.status(503).json({ error: `Database connection failed (${err.message}). Please ensure MongoDB Atlas Network Access is set to 0.0.0.0/0.` });
-  }
-});
 
 if (require.main === module || process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
