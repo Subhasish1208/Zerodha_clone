@@ -1,6 +1,5 @@
 const express=require("express");
 const mongoose=require("mongoose");
-mongoose.set('bufferCommands', false);
 const bodyParser=require('body-parser');
 const cors=require('cors');
 require('dotenv').config();
